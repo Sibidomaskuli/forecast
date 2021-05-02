@@ -1,13 +1,4 @@
-import React from "react";
-import './App.css';
-
-export default function App() {
- return (
-  <div className="App">
-   <header className="App-header">
-   <div className="container">
-    <div className="weather-app">
-    <div className="card">
+<div className="card">
      <div className="card-body">
 
       <div className="list-group">
@@ -87,7 +78,7 @@ export default function App() {
            </ul>            
          </medium>
       </div>
-      
+      <br />
       <div className="row">
         <div className="col-sm-4">
          <div className="card">
@@ -276,15 +267,10 @@ export default function App() {
         Netlify hosted
         </a>
        </small>
-       </div>
-       
+      </div>
+
+
+
+      
      </div>
     </div>
-    </div>    
-   </div>
-   </header>
-  </div>
- );
-}
-
-     

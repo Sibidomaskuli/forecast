@@ -1,53 +1,46 @@
 import React from "react";
-import './App.css';
 
-export default function App() {
- return (
-  <div className="App">
-   <header className="App-header">
-   <div className="container">
-    <div className="weather-app">
-    <div className="card">
-     <div className="card-body">
-
-      <div className="list-group">
-       <span className="border border-primary">
-        <a
+export default function SpareFile
+ 
+<header className="App-header">
+    <div className="container">
+     <div className="card">
+      <div className="card-body">
+      
+          
+       <div className="list-group">
+        <span className="border border-primary">
+         <a
           href="#"
           className="list-group-item list-group-item-action active"
           aria-current="true"
           rel="no referrer"
-        />
-       </span>
-       <span className="d-flex justify-content-between">
-        <h4 className="mb-1">
-         <span className="cityName">
-         Moscow{" "}🌇
-         </span>
-        </h4>
-         <h5 className="today">Sunday, 02 May 18:48</h5>
-         <ul>
-          <li>feels like: 1°</li>
-          <li>Sunny</li>
-         </ul>
-       </span>
-       <img
-          className="icon"
-          src="https://openweathermap.org/img/wn/01d@2x.png"
-          alt=""
-       />
-       <div className="degrees" id="font-size">
-        13 °c
-       </div>      
-      </div>
-      <div className="unitConverter">
-       <ul>
-        <a href="/" className="celsius" rel="noreferrer">C°</a>
-        |{" "}
-        <a href="/" className="fahrenheit" rel="noreferrer">F°</a>
-       </ul>  
-      </div>
-      <form className="Input">
+         >
+          <span className="d-flex justify-content-between">
+           <h4 className="mb-1">          
+             
+              Moscow{" "}🌇
+            </h4>
+            <img
+     className="icon"
+     src="https://openweathermap.org/img/wn/01d@2x.png"
+     alt="" 
+     />      
+                              
+           <h5 className="">Sunday, 02 May 18:00</h5>
+           
+           <ul><li>feels like: -1°</li>
+            <li>Sunny</li>
+           </ul>
+          </span>
+          <p className="mb-1" id="degree">
+           <h5>5°</h5>
+           <a href="#" id="celsius">C</a>|
+                <a href="#" id="fahrenheit">F</a>
+          </p>
+         </a>
+
+         <form className="Input">
           <div className="row">
           <div className="col-7">               
           <input
@@ -76,8 +69,9 @@ export default function App() {
            />         
           </div>
          </div>
-      </form>
-      <div className="d-flex w-100 justify-content-between">
+         </form>
+
+         <div className="d-flex w-100 justify-content-between">
          <medium className="text-muted" id="weather">
            <ul>
             <li> 🚩 Wind: km/h;{" "}</li>
@@ -86,9 +80,17 @@ export default function App() {
             <li> ☔ Precipitation: 86%</li>
            </ul>            
          </medium>
-      </div>
-      
-      <div className="row">
+          </div>
+         
+        </span>
+       </div>
+         </div>
+          
+       <br />
+
+          
+
+       <div className="row">
         <div className="col-sm-4">
          <div className="card">
           <div className="card border-warning">
@@ -172,8 +174,9 @@ export default function App() {
          </div>
         </div>         
       </div>
+      
 
-      <div className="row">         
+       <div className="row">         
         <div className="col-sm-4">
          <div className="card">
           <div className="card border-warning">
@@ -257,34 +260,16 @@ export default function App() {
          </div>
         </div>         
       </div>
-      <div className="Footer">
-       <small>
-        Brain- stormed by <em>Shirin Eldris</em> 🤖, {""}
-        <a
-         href="https://github.com/Sibidomaskuli/weathering-heights.git"
-         className="purple"
-         target="_blank"
-         rel="noreferrer"
-        >
-        Open-Source on GitHub,
-        </a>
-        <a href="/"
-         className="green"
-         target="_blank"
-         rel="noreferrer"
-        >{" "}
-        Netlify hosted
-        </a>
-       </small>
-       </div>
+      
+      <Footer />    
        
+      </div>
      </div>
+
     </div>
-    </div>    
-   </div>
+    <br />
+    <br />
+    <br />
    </header>
   </div>
  );
-}
-
-     
