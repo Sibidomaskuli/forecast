@@ -21,13 +21,12 @@ export default function App() {
        </span>
        <span className="d-flex justify-content-between">
         <h4 className="mb-1">
-         <span className="cityName">
-         Moscow{" "}🌇
-         </span>
-        </h4>
-         <h5 className="today">Sunday, 02 May 18:48</h5>
-         <ul>
-          <li>feels like: 1°</li>
+         <strong>
+          Moscow{" "}🌇
+         </strong>          
+        </h4>      
+          <h5 className="today">Sunday, 02 May 18:48</h5> 
+          <ul>
           <li>Sunny</li>
          </ul>
        </span>
@@ -37,8 +36,9 @@ export default function App() {
           alt=""
        />
        <div className="degrees" id="font-size">
-        13 °c
-       </div>      
+          13 °c 
+       </div>
+         
       </div>
       <div className="unitConverter">
        <ul>
@@ -79,11 +79,11 @@ export default function App() {
       </form>
       <div className="d-flex w-100 justify-content-between">
          <medium className="text-muted" id="weather">
-           <ul>
-            <li> 🚩 Wind: km/h;{" "}</li>
-            <li> 💧 Humidity: %;{" "}</li>
-            <li> 🌡️ Atmospheric Pressure: hPa;{" "}</li>
-            <li> ☔ Precipitation: 86%</li>
+           <ul  className="forecastInfo">
+            <li> Wind: km/h;{"  "}</li>
+            <li> Humidity: %;{"  "}</li>
+            <li> Atmospheric Pressure: hPa;{" "}</li>
+            <li> Feels like: 1 C°'</li>
            </ul>            
          </medium>
       </div>
