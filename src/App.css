@@ -1,38 +1,106 @@
-.App {
-  text-align: center;
+body {
+  margin: 50px;
+  padding-left: auto;
+  padding-right: auto;
+  max-width: auto;
+  background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%);
+}
+input {
+  -webkit-writing-mode: horizontal-tb !important;
+  text-rendering: auto;
+  color: -internal-light-dark(black, white);
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  appearance: textfield;
+  background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+  -webkit-rtl-ordering: logical;
+  cursor: text;
+  margin: 0em;
+  font: 400 13.3333px Arial;
+  padding: 1px 2px;
+  border-width: 2px;
+  border-style: inset;
+  border-color: blue;
+  border-image: initial;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.icon-1 {}
+
+.column-1 {
+  font-weight: lighter;
+  font-family: "DM Sans", sans-serif;
+  color: #e64a19;   
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.column-2 {
+  font-weight: lighter;
+  font-family: "DM Sans", sans-serif;
+  color: #2196f3;  
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.column-3 {
+  font-weight: lighter;
+  font-family: "DM Sans", sans-serif;
+  color: #198754;
+}
+
+.column-4 {
+  font-weight: lighter;
+  font-family: "DM Sans", sans-serif;
+  color: #e64a19;
+}
+.column-5 {
+  font-weight: lighter;
+  font-family: "DM Sans", sans-serif;
+  color: #21209c;
+}
+
+.column-6 {
+  font-weight: lighter;
+  font-family: "DM Sans", sans-serif;
+  color: #198754;
+}
+
+.container {
+  padding: 25px auto;
+  max-width: 60%;
+}
+.card {
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: inherit;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
 }
-
-.App-link {
-  color: #61dafb;
+.card-body {
+  padding: 4px;
+  padding-bottom: 0;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.list-group {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+  border-radius: 0;
+  border-color: white;
+  font-family: "Montserrat", sans-serif;
+}
+.row {
+  padding: 0px;
+}
+#clickIt {
+  background: #0d6efd;
+  color: #ffffff;
+  border: 1px solid #885df1;
+  border-radius: 3px;
 }
