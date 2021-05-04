@@ -1,7 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios"; 
 import './App.css';
+import {scryRenderedComponentsWithType} from "react-dom/test-utils";
 
 export default function App() {
+ const [city, setCity]=useState(null);
+ const [weatherData, setWeatherData]=useState({ready: false});
+  
+ function updateCity(event) {
+  setCity(event.target.vaLue); 
+ }
+
+
+ function handleSubmit(event) {
+  event.preventDefault();
+  search(); 
+ }
+ 
+ function search() {
+  const key="64c64ffadfe4c3d751ef8a44c2608885";
+   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
+   axios.get(url).then(displayResult);
+ }
+
+ function displayResult(response) {
+  console.log(response.data);
+  setWeatherData({
+   ready: true,
+   city: response.data.name,
+   icon: response.data.weather[0].icon,
+   date: new Date(response.data.dt*1000),
+   temperature: Math.round(response.data.main.temp),
+   feels_like: Math.round(),
+   pressure: response.data.main.pressure, 
+   humidity: response.data.main.humidity,
+   wind: Math.round(response.data.wind.speed),
+   description: response.data.weather[0].description,
+  });
+ }
+
+ 
  return (
   <div className="App">
    <div className="container">
@@ -54,7 +92,10 @@ export default function App() {
            >F°</a>
           </ul>
          </div> {/*unitConverter*/}
-         <form className="Input">
+         <form
+          className="Input"
+          onSubmit={handleSubmit}        
+         >
           <div className="row">
            <div className="col-7">
             <input
@@ -63,7 +104,8 @@ export default function App() {
              className="form-control"
              autoComplete="off"
              autoFocus="on"
-             id="box-contents"            
+             id="box-contents"
+             onChange={updateCity}
             />
            </div> {/*col-7*/}
            <div className="col-2">
