@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios"; 
 import './App.css';
-import {scryRenderedComponentsWithType} from "react-dom/test-utils";
 
 export default function App() {
  const [city, setCity]=useState(null);
@@ -18,9 +17,9 @@ export default function App() {
  }
  
  function search() {
-  const key="64c64ffadfe4c3d751ef8a44c2608885";
-   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
-   axios.get(url).then(displayResult);
+  const key ="64c64ffadfe4c3d751ef8a44c2608885";
+  let url = "https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric";
+  axios.get(url).then(displayResult);
  }
 
  function displayResult(response) {
@@ -38,7 +37,6 @@ export default function App() {
    description: response.data.weather[0].description,
   });
  }
-
  
  return (
   <div className="App">
