@@ -26,12 +26,15 @@ export default function App() {
              <div className="degrees" id="font-size">
              13 °c 
              </div>
-            </h4>
+            </h4>           
            </div> {/*col*/}
            <div className="col d-flex flex-column align-items-end">
             <h5 className="today">Tuesday, 04 May 15:29</h5>
             <ul>
-             <li>Sunny</li>
+             <li>
+              <h6>Feels Like: 2 C°</h6>
+             </li>
+             <li id="description">Sunny</li>
             </ul>
            </div>
           </div> {/*row*/}
@@ -84,10 +87,11 @@ export default function App() {
          <div className="d-flex w-100 justify-content-between">
           <medium className="text-muted" id="weather">
            <ul>
+           <center className="display">            
             <li>Wind: 3 km/h;{"  "}</li>
             <li>Humidity: 30 %;{"  "}</li>
-            <li>Atmospheric Pressure: 1071 hPa;{" "}</li>
-            <li>Feels Like: 1 C°</li>
+            <li>Atmospheric Pressure: 1071 hPa</li>            
+           </center>
            </ul>
           </medium>
          </div> {/*d-flex w-100 justify-content-between*/}
@@ -276,9 +280,10 @@ export default function App() {
          </div> {/*row*/}
          <div className="Footer">
           <small>
+           <center>
            Brain-stormed by <em>Shirin Eldris</em>🤖, {""}
            <a
-            href="/"
+            href="https://github.com/Sibidomaskuli/forecast.git"
             className="purple"
             target="_blank"
             rel="noreferrer"
@@ -293,6 +298,7 @@ export default function App() {
             >{" "}
             Netlify hosted
            </a>
+           </center>
           </small>
          </div> {/*Footer*/}      
         </div> {/*border border-primary*/}
