@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
+import Default_City from "./Default_City"; 
 import axios from "axios"; 
 import './App.css';
 
-export default function App() {
- const [city, setCity]=useState(null);
- const [weatherData, setWeatherData]=useState({ready: false});
+export default function App(props) {
+ const [city, setCity] = useState(props.defaultCity);
+ const [weatherData, setWeatherData] = useState({ ready: false});
   
  function updateCity(event) {
   setCity(event.target.vaLue); 
@@ -16,9 +17,8 @@ export default function App() {
  }
  
  function search() {
-  const key="64c64ffadfe4c3d751ef8a44c2608885";
-  let city = "london"
-  let url = "https://api.openweathermap.org/data/2.5/weather?q=london,UK&appid=64c64ffadfe4c3d751ef8a44c2608885&units=metric";
+  let key="64c64ffadfe4c3d751ef8a44c2608885";   
+  let url = "https://api.openweathermap.org/data/2.5/weather?q=London&appid=64c64ffadfe4c3d751ef8a44c2608885&units=metric";
   axios.get(url).then(displayResult);
  }
 
@@ -29,7 +29,8 @@ export default function App() {
    city: response.data.name,
    icon: response.data.weather[0].icon,
    date: new Date(response.data.dt*1000),
-   temperature: Math.round(response.data.main.temp),   
+   temperature: Math.round(response.data.main.temp),
+   feels_like: Math.round(response.data.main.feels_like),
    pressure: response.data.main.pressure, 
    humidity: response.data.main.humidity,
    wind: Math.round(response.data.wind.speed),

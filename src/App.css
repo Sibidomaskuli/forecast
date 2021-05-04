@@ -1,11 +1,7 @@
 body {
   margin-top: 150px;
 	color: #235784;
-	background-image: linear-gradient(
-		112.7deg,
-		rgb(162, 247, 241) 0.3%,
-		rgb(199, 146, 255) 88.7%
-	);
+	background-image: linear-gradient(to top, #9890e3 0%, #b1f4cf 100%);
 	width: 100%;
 	height: 1000px;
 }
