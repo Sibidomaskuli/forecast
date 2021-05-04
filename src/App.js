@@ -23,21 +23,22 @@ export default function App() {
         <h4 className="mb-1">
          <strong>
           Moscow{" "}🌇
-         </strong>          
+         </strong>
+         <img
+          className="icon"
+          src="https://openweathermap.org/img/wn/01d@2x.png"
+          alt=""
+       />  
+       <div className="degrees" id="font-size">
+          13 °c 
+       </div>
         </h4>      
           <h5 className="today">Sunday, 02 May 18:48</h5> 
           <ul>
           <li>Sunny</li>
          </ul>
        </span>
-       <img
-          className="icon"
-          src="https://openweathermap.org/img/wn/01d@2x.png"
-          alt=""
-       />
-       <div className="degrees" id="font-size">
-          13 °c 
-       </div>
+       
          
       </div>
       <div className="unitConverter">
@@ -46,7 +47,8 @@ export default function App() {
         |{" "}
         <a href="/" className="fahrenheit" rel="noreferrer">F°</a>
        </ul>  
-      </div>
+        </div>
+        
       <form className="Input">
           <div className="row">
           <div className="col-7">               
