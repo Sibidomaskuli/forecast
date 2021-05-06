@@ -8,7 +8,7 @@ export default function Forecast(props) {
  const [weatherData, setWeatherData] = useState({ ready: false});
   
  function updateCity(event) {
-   setCity(event.target.vaLue);    
+  setCity(event.target.vaLue);    
  }
 
  function handleSubmit(event) {
@@ -23,13 +23,11 @@ export default function Forecast(props) {
  }
 
  function displayResult(response) {
-  console.log(response.data);
-  let iconCode = response.data.weather[0].icon;
-  let iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+  console.log(response.data);  
   setWeatherData({
    ready: true,
    city: response.data.name,
-   icon: <img src={iconUrl} alt={response.data.weather[0].description} />, 
+   icon: response.data.weather[0].icon,
    date: new Date(response.data.dt*1000),
    temperature: Math.round(response.data.main.temp),
    max_temp: Math.round(response.data.main.temp_max),
@@ -132,7 +130,9 @@ export default function Forecast(props) {
                       </span>
                      <br />
                     </div> {/*card-header bg-transparent border-warning*/}
-                   <span>{weatherData.icon}</span>                     
+                   <span>
+                   <Icons code={props.data.icon} />
+                   </span>
                     <br />
                     <p className="card-text">
                      max {weatherData.max_temp}°{" "}
@@ -333,7 +333,7 @@ export default function Forecast(props) {
    );
   } else {
    search();
-   return "Loading...";
+   return "Please stand by while loading...";
   } 
 }
          
