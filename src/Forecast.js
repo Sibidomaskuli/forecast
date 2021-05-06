@@ -56,9 +56,9 @@ export default function Forecast(props) {
                <div className="col">
                 <h4 className="mb-1">
                  {/*city name display in header*/}
-                 <strong>
+                 <span className="Style">
                   {weatherData.city}{" "}🌇
-                 </strong>                           
+                 </span>                           
                  <div className="degrees" id="font-size">
                  {weatherData.temperature} c° 
                  </div>
@@ -73,22 +73,7 @@ export default function Forecast(props) {
                 </ul>
                </div>
               </div> {/*row*/}
-             </div> {/*list-group-item list-group-item active*/}
-             <div className="unitConverter">
-              <ul>
-               <a
-                href="/"
-                className="celsius"
-                rel="noreferrer"           
-               >C°</a>
-               |{" "}
-               <a
-                href="/"
-                className="fahrenheit"
-                rel="noreferrer"          
-               >F°</a>
-              </ul>
-             </div> {/*unitConverter*/}
+             </div> {/*list-group-item list-group-item active*/}       
              <form
               className="Input"
               onSubmit={handleSubmit}        
@@ -126,7 +111,7 @@ export default function Forecast(props) {
              <div className="d-flex w-100 justify-content-between">
               <medium className="text-muted" id="weather">
                <ul>
-               <center className="display">            
+               <center>            
                 <li>Wind: {weatherData.wind} km/h;{"  "}</li>
                 <li>Humidity: {weatherData.humidity} %;{"  "}</li>
                 <li>Atmospheric Pressure: {weatherData.pressure} hPa</li>            

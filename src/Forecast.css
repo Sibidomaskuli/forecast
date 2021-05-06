@@ -1,13 +1,5 @@
-body {
-  margin-top: 150px;
-	color: #235784;
-	background-image: linear-gradient(to top, #9890e3 0%, #b1f4cf 100%);
-	width: 100%;
-	height: 1000px;
-}
-
 input {
-  -webkit-writing-mode: horizontal-tb !important;
+ -webkit-writing-mode: horizontal-tb !important;
  text-rendering: auto;
  color: -internal-light-dark(black, white);
  letter-spacing: normal;
@@ -102,19 +94,20 @@ h5 {
   padding-top: 20px;
   padding-right: 70px;  
   border: 0; 
+  margin-bottom: 20px;
  }
 
  .row {
    padding: 0; 
  }
 
- .icon {
-  margin-right: 200px;
+ .Style {
+   font-size: xx-large;
  }
 
  .unitConverter {
-  margin-right: 20px;
- }
+  margin-left: -30px;
+ } 
 
  .Input {
   padding-bottom: 0;
@@ -130,11 +123,7 @@ h5 {
   margin-left: 0px;
   margin-right: 0px;
  }
-
- .display {
-  margin-inline-start: 80px;
- }
-
+ 
  .small {
   display: block;
   text-align: left;
@@ -183,10 +172,11 @@ h5 {
  }
 
  #font-size {
-  font-size: xx-large;
+  font-size: x-large;
   font-weight: 500;
   margin-left: 20px;
   margin-bottom: 20px;  
+  padding-top: 15px; 
  }
 
  #description {
