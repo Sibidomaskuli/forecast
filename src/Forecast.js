@@ -305,7 +305,7 @@ export default function Forecast(props) {
                <center>
                Brain-stormed by <em>Shirin Eldris</em>🤖, {""}
                <a
-                href="https://github.com/Sibidomaskuli/forecast.git"
+                href="https://github.com/Sibidomaskuli/forecast.git"                
                 className="purple"
                 target="_blank"
                 rel="noreferrer"
