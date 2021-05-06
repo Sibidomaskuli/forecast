@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import Default_City from "./Default_City"; 
-import axios from "axios"; 
+import Icons from "./Icons"; 
+import axios from "axios";
 import './App.css';
 
 export default function App(props) {
@@ -8,7 +8,7 @@ export default function App(props) {
  const [weatherData, setWeatherData] = useState({ ready: false});
   
  function updateCity(event) {
-  setCity(event.target.vaLue); 
+   setCity(event.target.vaLue);    
  }
 
  function handleSubmit(event) {
@@ -18,7 +18,7 @@ export default function App(props) {
  
  function search() {
   let key="64c64ffadfe4c3d751ef8a44c2608885";   
-  let url = "https://api.openweathermap.org/data/2.5/weather?q=London&appid=64c64ffadfe4c3d751ef8a44c2608885&units=metric";
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
   axios.get(url).then(displayResult);
  }
 
@@ -53,15 +53,15 @@ export default function App(props) {
                 <h4 className="mb-1">
                  {/*city name display in header*/}
                  <strong>
-                 Moscow{" "}🌇
+                  {weatherData.city}{" "}🌇
                  </strong>
                  <img
-                  className="icon"
-                  src="https://openweathermap.org/img/wn/01d@2x.png"
-                  alt=""             
-                 />
+                    className="icon-1"
+                    src="https://openweathermap.org/img/wn/01d@2x.png"
+                    alt=""
+                  />              
                  <div className="degrees" id="font-size">
-                 13 °c 
+                 {weatherData.temperature} c° 
                  </div>
                 </h4>           
                </div> {/*col*/}
@@ -69,9 +69,9 @@ export default function App(props) {
                 <h5 className="today">Tuesday, 04 May 15:29</h5>
                 <ul>
                  <li>
-                  <h6>Feels Like: 2 C°</h6>
+                  <h6>Feels like: {weatherData.feels_like}{" "}c°</h6>
                  </li>
-                 <li id="description">Sunny</li>
+                 <li id="description">{weatherData.description}</li>
                 </ul>
                </div>
               </div> {/*row*/}
@@ -129,9 +129,9 @@ export default function App(props) {
               <medium className="text-muted" id="weather">
                <ul>
                <center className="display">            
-                <li>Wind: 3 km/h;{"  "}</li>
-                <li>Humidity: 30 %;{"  "}</li>
-                <li>Atmospheric Pressure: 1071 hPa</li>            
+                <li>Wind: {weatherData.wind} km/h;{"  "}</li>
+                <li>Humidity: {weatherData.humidity} %;{"  "}</li>
+                <li>Atmospheric Pressure: {weatherData.pressure} hPa</li>            
                </center>
                </ul>
               </medium>
@@ -352,7 +352,7 @@ export default function App(props) {
    );
   } else {
    search();
-   return null;
+   return "Loading...";
   } 
 }
          
