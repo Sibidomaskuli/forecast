@@ -63,14 +63,16 @@ export default function Forecast(props) {
                  </div>
                 </h4>           
                </div> {/*col*/}
-               <div className="col d-flex flex-co lumn align-items-end">
-               <h5 className="today">Friday </h5>
-                <ul>
-                 <li>
-                  <h6>Feels like: {weatherData.feels_like}{" "}c°</h6>
-                 </li>                 
-                </ul>
-               </div>
+               <div className="col d-flex flex-co lumn align-items">
+               <ul>
+                <li>
+                <h5>07 May, 15:05</h5>
+                </li>               
+                <li>
+                 <h6>Feels like: {weatherData.feels_like}{" "}c°</h6>
+                </li>                 
+               </ul>
+               </div> {/*col d-flex flex-co lumn align-items*/}
               </div> {/*row*/}
              </div> {/*list-group-item list-group-item active*/}       
              <form
