@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+//import Date from "./Date"; 
 import Icons from "./Icons"; 
 import axios from "axios";
 import './Forecast.css';
@@ -29,6 +30,7 @@ export default function Forecast(props) {
    city: response.data.name,
    icon: response.data.weather[0].icon,
    date: new Date(response.data.dt*1000),
+   theDate: new Date(response.data.dt*1000),
    temperature: Math.round(response.data.main.temp),
    max_temp: Math.round(response.data.main.temp_max),
    min_temp: Math.round(response.data.main.temp_min),
@@ -62,8 +64,8 @@ export default function Forecast(props) {
                  </div>
                 </h4>           
                </div> {/*col*/}
-               <div className="col d-flex flex-column align-items-end">
-                <h5 className="today">Tuesday, 04 May 15:29</h5>
+               <div className="col d-flex flex-co lumn align-items-end">
+               <h5 className="today">Friday </h5>
                 <ul>
                  <li>
                   <h6>Feels like: {weatherData.feels_like}{" "}c°</h6>
