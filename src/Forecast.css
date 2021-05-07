@@ -132,6 +132,10 @@ h5 {
   line-height: 3;
  }
 
+ .icon-1 {
+  padding-top: 25px;
+ }
+
  .column-1,
  .column-4 {
   font-weight: lighter;

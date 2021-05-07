@@ -8,7 +8,7 @@ export default function Forecast(props) {
  const [weatherData, setWeatherData] = useState({ ready: false});
   
  function updateCity(event) {
-  setCity(event.target.vaLue);    
+  setCity(event.target.value);    
  }
 
  function handleSubmit(event) {
@@ -130,9 +130,9 @@ export default function Forecast(props) {
                       </span>
                      <br />
                     </div> {/*card-header bg-transparent border-warning*/}
-                   <span>
-                   <Icons code={props.data.icon} />
-                   </span>
+                   <div className="icon-1">
+                   <Icons code={weatherData.icon} />
+                   </div>
                     <br />
                     <p className="card-text">
                      max {weatherData.max_temp}°{" "}
