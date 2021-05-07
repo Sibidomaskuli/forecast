@@ -29,7 +29,6 @@ export default function Forecast(props) {
    ready: true,
    city: response.data.name,
    icon: response.data.weather[0].icon,
-   date: new Date(response.data.dt*1000),
    theDate: new Date(response.data.dt*1000),
    temperature: Math.round(response.data.main.temp),
    max_temp: Math.round(response.data.main.temp_max),
