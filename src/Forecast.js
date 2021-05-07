@@ -66,7 +66,7 @@ export default function Forecast(props) {
                <div className="col d-flex flex-co lumn align-items">
                <ul>
                 <li>
-                <h5>07 May, 15:05</h5>
+                 <h5>07 May, 15:30</h5> {/*How do I use .main_date from <Date code={weatherData.theDate}/> ?*/}
                 </li>               
                 <li>
                  <h6>Feels like: {weatherData.feels_like}{" "}c°</h6>
@@ -129,7 +129,7 @@ export default function Forecast(props) {
                    <span className="column-1">
                     <div className="card-header bg-transparent border-warning">
                       <span className="colOne-weekday">
-                       Today                     
+                       Today{/*How to display {today} from Date.js?*/}
                       </span>
                      <br />
                     </div> {/*card-header bg-transparent border-warning*/}
