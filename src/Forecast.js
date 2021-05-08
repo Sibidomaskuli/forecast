@@ -1,5 +1,6 @@
 import React, {useState} from "react";
-//import Date from "./Date"; 
+import FormattedDate from "./FormattedDate";
+import FormattedWeekday from "./FormattedWeekday"; 
 import Icons from "./Icons"; 
 import axios from "axios";
 import './Forecast.css';
@@ -29,7 +30,7 @@ export default function Forecast(props) {
    ready: true,
    city: response.data.name,
    icon: response.data.weather[0].icon,
-   theDate: new Date(response.data.dt*1000),
+   todayDate: new Date(response.data.dt*1000),
    temperature: Math.round(response.data.main.temp),
    max_temp: Math.round(response.data.main.temp_max),
    min_temp: Math.round(response.data.main.temp_min),
@@ -66,7 +67,7 @@ export default function Forecast(props) {
                <div className="col d-flex flex-co lumn align-items">
                <ul>
                 <li>
-                 <h5>07 May, 15:30</h5> {/*How do I use .main_date from <Date code={weatherData.theDate}/> ?*/}
+                 <h5><FormattedDate code={weatherData.todayDate} /></h5> 
                 </li>               
                 <li>
                  <h6>Feels like: {weatherData.feels_like}{" "}c°</h6>
@@ -129,7 +130,7 @@ export default function Forecast(props) {
                    <span className="column-1">
                     <div className="card-header bg-transparent border-warning">
                       <span className="colOne-weekday">
-                       Today{/*How to display {today} from Date.js?*/}
+                        <FormattedWeekday code={weatherData.todayDate} />
                       </span>
                      <br />
                     </div> {/*card-header bg-transparent border-warning*/}
