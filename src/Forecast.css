@@ -51,13 +51,18 @@ h5 {
    color: tomato;
  }
 
+ .col-sm-4 {
+  padding: ;
+ }
+
  .container {
   padding: 25px auto;
   max-width: 60%;
  }
 
  .weather-app {
-  max-width: 900px;
+  max-width: 700px;
+   
   margin: 0 auto;
  }
 
