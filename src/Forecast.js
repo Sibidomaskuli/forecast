@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import FormattedDate from "./FormattedDate";
-import FormattedWeekday from "./FormattedWeekday"; 
+import FormattedWeekday from "./FormattedWeekday";
+import CurrentLocation from "./CurrentLocation"; 
 import Icons from "./Icons"; 
 import axios from "axios";
 import './Forecast.css';
@@ -8,27 +9,11 @@ import './Forecast.css';
 export default function Forecast(props) {
  const [city, setCity] = useState(props.defaultCity);
  const [weatherData, setWeatherData] = useState({ ready: false});
-  
- function updateCity(event) {
-  setCity(event.target.value);    
- }
-
- function handleSubmit(event) {
-  event.preventDefault();
-  search(); 
- }
  
- function search() {
-  let key="64c64ffadfe4c3d751ef8a44c2608885";   
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
-  axios.get(url).then(displayResult);
- }
-
- function displayResult(response) {
-  console.log(response.data);  
+ function displayResult(response) {    
   setWeatherData({
    ready: true,
-   city: response.data.name,
+   city: response.data.name + ", " + response.data.sys.country,
    icon: response.data.weather[0].icon,
    todayDate: new Date(response.data.dt*1000),
    temperature: Math.round(response.data.main.temp),
@@ -39,8 +24,38 @@ export default function Forecast(props) {
    humidity: response.data.main.humidity,
    wind: Math.round(response.data.wind.speed),
    description: response.data.weather[0].description,
+   coordinates: response.data.coord,
   });
  }
+ 
+ function handleSubmit(event) {
+  event.preventDefault();
+  search(); 
+ }
+ 
+ function updateCity(event) {
+  setCity(event.target.value);    
+ } 
+  
+  function currentPosition(position) {
+   const key = "64c64ffadfe4c3d751ef8a44c2608885";
+   let lat=position.coords.latitude;
+   let lon = position.coords.longtitude;   
+   let geoUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alert&appid=${key}&units=metric`;
+   axios.get(geoUrl).then(displayResult);
+  }
+ 
+ function getCurrentPosition(event) {
+  console.log(currentPosition);
+   event.preventDefault();
+   navigator.geolocation.getCurrentPosition(currentPosition); 
+  }
+   
+  function search() {
+   const key="64c64ffadfe4c3d751ef8a44c2608885";   
+   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
+   axios.get(url).then(displayResult);
+  }
  
   if (weatherData.ready) {
     return (
@@ -100,14 +115,7 @@ export default function Forecast(props) {
                  id="search-button"
                 />
                </div> {/*col-2*/}
-               <div className="col-3">
-                <input
-                 type="submit"
-                 value="I'm here 👋"
-                 className="btn btn-outline-danger w-100"
-                 id="search-button"
-                />
-               </div> {/*col-3*/}
+              <CurrentLocation code={weatherData.coordinates} />
               </div> {/*row*/}
              </form>
              <div className="d-flex w-100 justify-content-between">
