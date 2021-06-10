@@ -10,8 +10,8 @@ export default function Forecast(props) {
  const [city, setCity] = useState(props.defaultCity);
  const [weatherData, setWeatherData] = useState({ ready: false});
  
- function displayResult(response) {    
-  setWeatherData({
+ function displayForecast(response) {  
+  setWeatherData({   
    ready: true,
    city: response.data.name + ", " + response.data.sys.country,
    icon: response.data.weather[0].icon,
@@ -24,7 +24,7 @@ export default function Forecast(props) {
    humidity: response.data.main.humidity,
    wind: Math.round(response.data.wind.speed),
    description: response.data.weather[0].description,
-   coordinates: response.data.coord,
+     
   });
  }
  
@@ -35,31 +35,35 @@ export default function Forecast(props) {
  
  function updateCity(event) {
   setCity(event.target.value);    
- } 
-  
-  function currentPosition(position) {
-   const key = "64c64ffadfe4c3d751ef8a44c2608885";
-   let lat=position.coords.latitude;
-   let lon = position.coords.longtitude;   
-   let geoUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alert&appid=${key}&units=metric`;
-   axios.get(geoUrl).then(displayResult);
-  }
+ }
  
- function getCurrentPosition(event) {
-  console.log(currentPosition);
+ let geolocationButton= document.querySelector("#search-button");
+ geolocationButton.addEventListener("click", getGeolocation);
+ 
+ function getGeolocation(event) {  
    event.preventDefault();
-   navigator.geolocation.getCurrentPosition(currentPosition); 
-  }
-   
-  function search() {
-   const key="64c64ffadfe4c3d751ef8a44c2608885";   
-   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
-   axios.get(url).then(displayResult);
-  }
+   navigator.geolocation.getCurrentPosition(getCoords); 
+ }
+
+ function getCoords(response) {
+  const key = "64c64ffadfe4c3d751ef8a44c2608885";
+  let lat=response.coords.latitude;
+  let lon = response.coords.longtitude;   
+  let geoUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alert&appid=${key}&units=metric`;
+  axios.get(geoUrl).then(displayLocation);  
+ }
+
+ function search(coord) {
+  const key="64c64ffadfe4c3d751ef8a44c2608885";   
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
+  axios.get(url).then(displayForecast);
+ }
  
+ function displayLocation(response) {
+  
   if (weatherData.ready) {
-    return (
-      <div className="App">
+   return (
+    <div className="App">
         <div className="container">
           <div className="weather-app">
             <div className="card">
@@ -82,7 +86,7 @@ export default function Forecast(props) {
                         <div className="col d-flex flex-co lumn align-items">
                           <ul>
                             <li>
-                              <h5><FormattedDate code={weatherData.today} /></h5>
+                              <h5><FormattedDate code={weatherData.todayDate} /></h5>
                             </li>
                             <li>
                               <h6>Feels like: {weatherData.feels_like}{" "}c°</h6>
@@ -105,7 +109,7 @@ export default function Forecast(props) {
                             autoFocus="on"
                             id="box-contents"
                             onChange={updateCity}
-                          />
+                            />
                         </div> {/*col-7*/}
                         <div className="col-2">
                           <input
@@ -113,7 +117,7 @@ export default function Forecast(props) {
                             value="Search"
                             className="btn btn-outline-primary w-100"
                             id="search-button"
-                          />
+                            />
                         </div> {/*col-2*/}
                         <CurrentLocation code={weatherData.coordinates} />
                       </div> {/*row*/}
@@ -176,7 +180,7 @@ export default function Forecast(props) {
                                     className="icon-2"
                                     src="https://openweathermap.org/img/wn/04d@2x.png"
                                     alt=""
-                                  />
+                                    />
                                   <br />
                                   <p className="card-text">
                                     max 2°{" "}
@@ -206,7 +210,7 @@ export default function Forecast(props) {
                                     className="icon-3"
                                     src="https://openweathermap.org/img/wn/02d@2x.png"
                                     alt=""
-                                  />
+                                    />
                                   <br />
                                   <p className="card-text">
                                     max 7°{" "}
@@ -238,7 +242,7 @@ export default function Forecast(props) {
                                     className="icon-4"
                                     src="https://openweathermap.org/img/wn/01d@2x.png"
                                     alt=""
-                                  />
+                                    />
                                   <br />
                                   <p className="card-text">
                                     max 12°{" "}
@@ -268,7 +272,7 @@ export default function Forecast(props) {
                                     className="icon-5"
                                     src="https://openweathermap.org/img/wn/03d@2x.png"
                                     alt=""
-                                  />
+                                    />
                                   <br />
                                   <p className="card-text">
                                     max 10°{" "}
@@ -298,7 +302,7 @@ export default function Forecast(props) {
                                     className="icon-6"
                                     src="https://openweathermap.org/img/wn/02n@2x.png"
                                     alt=""
-                                  />
+                                    />
                                   <br />
                                   <p className="card-text">
                                     max 6°
@@ -323,7 +327,7 @@ export default function Forecast(props) {
                             className="purple"
                             target="_blank"
                             rel="noreferrer"
-                          >
+                            >
                             GitHub 🌍
                           </a>
                           <a
@@ -345,11 +349,12 @@ export default function Forecast(props) {
         </div> {/*container*/}
       </div>
     );
-  } else {
+   } else {
    search();
    return "Please stand by while loading...";
+  }
   } 
 }
-         
+
  
-     
+

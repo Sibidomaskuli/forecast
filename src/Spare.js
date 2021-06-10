@@ -14,3 +14,23 @@ function showPosition(position) {
 
   precipitation: response.data.clouds.all,
   
+  let visibility = document.querySelector("#visibility");
+  visibility.innerHTML = `${(response.data.visibility / 1000).toFixed(1)}km`;
+   
+  let timezoneShift = response.data.timezone * 1000;
+  let utcSunrise = response.data.sys.sunrise * 1000;
+  let utcSunset = response.data.sys.sunset * 1000;
+  let localSunrise = utcSunrise + timezoneShift;
+  let localSunset = utcSunset + timezoneShift;
+
+  document.querySelector("#sunrise-time").innerHTML = `${formatHours(
+    localSunrise
+  )}`;
+  document.querySelector("#sunset-time").innerHTML = `${formatHours(
+    localSunset
+  )}`;
+
+  
+
+
+  

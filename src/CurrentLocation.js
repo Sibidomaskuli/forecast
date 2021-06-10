@@ -7,8 +7,7 @@ export default function CurrentLocation() {
     type="submit"
     value="I'm here 👋"
     className="btn btn-outline-danger w-100"
-    id="search-button"
-   />
-  </div> 
- );            
+    id="search-button"   />
+    </div>
+ );
 }
