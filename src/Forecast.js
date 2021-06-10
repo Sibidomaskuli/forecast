@@ -315,14 +315,14 @@ export default function Forecast(props) {
              <div className="Footer">
               <small>
                <center>
-               Brain-stormed by <em>Shirin Eldris</em>🤖, {""}
+               Created by <em>Shirin Eldris</em> {""}
                <a
                 href="https://github.com/Sibidomaskuli/forecast.git"                
                 className="purple"
                 target="_blank"
                 rel="noreferrer"
                >
-                Open-Sourced on GitHub,           
+                GitHub 🌍          
                </a>
                <a
                 a href="/"
@@ -330,7 +330,7 @@ export default function Forecast(props) {
                 target="_blank"
                 rel="noreferrer"
                 >{" "}
-                Netlify hosted
+                Netlify
                </a>
                </center>
               </small>
