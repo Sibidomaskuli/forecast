@@ -357,8 +357,7 @@ export default function Forecast(props) {
   load();
   return null;
   
- } else {
-  if (weatherData.ready) {
+ } else if (weatherData.ready) {
    return (
     <div className="App">
         <div className="container">
@@ -655,7 +654,7 @@ export default function Forecast(props) {
    }
    }
 
- }
+ 
 
   
   
