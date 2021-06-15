@@ -36,7 +36,7 @@ export default function Forecast(props) {
  }
  
   function handleClick(event) {
-    event.preventDefault();
+    
     navigator.geolocation.getCurrentPosition(getCoords); 
   } 
  
@@ -113,11 +113,8 @@ export default function Forecast(props) {
                             />
                        </div> {/*col-2*/}
              <div className="col-3">              
-              <button onClick={handleClick}                
-               type="button"
-               variant="outline-danger"
-               id="search-button">I'm here 👋                           
-                         </button>
+              <button onClick={handleClick}   
+               id="search-button">I'm here 👋</button>
                        </div> {/*col-3*/}                       
                       </div> {/*row*/}
                     </form>
