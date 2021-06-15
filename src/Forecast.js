@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import FormattedDate from "./FormattedDate";
 import FormattedWeekday from "./FormattedWeekday";
-import CurrentLocation from "./CurrentLocation"; 
 import Icons from "./Icons"; 
 import axios from "axios";
 import './Forecast.css';
@@ -23,8 +22,7 @@ export default function Forecast(props) {
    pressure: response.data.main.pressure, 
    humidity: response.data.main.humidity,
    wind: Math.round(response.data.wind.speed),
-   description: response.data.weather[0].description,
-     
+   description: response.data.weather[0].description,     
   });
  }
  
@@ -37,30 +35,25 @@ export default function Forecast(props) {
   setCity(event.target.value);    
  }
  
- let geolocationButton= document.querySelector("#search-button");
- geolocationButton.addEventListener("click", getGeolocation);
+  function handleClick(event) {
+    event.preventDefault();
+    navigator.geolocation.getCurrentPosition(getCoords); 
+  } 
  
- function getGeolocation(event) {  
-   event.preventDefault();
-   navigator.geolocation.getCurrentPosition(getCoords); 
- }
-
  function getCoords(response) {
   const key = "64c64ffadfe4c3d751ef8a44c2608885";
   let lat=response.coords.latitude;
   let lon = response.coords.longtitude;   
   let geoUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alert&appid=${key}&units=metric`;
-  axios.get(geoUrl).then(displayLocation);  
+  axios.get(geoUrl).then(displayForecast);  
  }
 
- function search(coord) {
+ function search() {
   const key="64c64ffadfe4c3d751ef8a44c2608885";   
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
   axios.get(url).then(displayForecast);
- }
- 
- function displayLocation(response) {
-  
+ } 
+   
   if (weatherData.ready) {
    return (
     <div className="App">
@@ -118,8 +111,14 @@ export default function Forecast(props) {
                             className="btn btn-outline-primary w-100"
                             id="search-button"
                             />
-                        </div> {/*col-2*/}
-                        <CurrentLocation code={weatherData.coordinates} />
+                       </div> {/*col-2*/}
+             <div className="col-3">              
+              <button onClick={handleClick}                
+               type="button"
+               variant="outline-danger"
+               id="search-button">I'm here 👋                           
+                         </button>
+                       </div> {/*col-3*/}                       
                       </div> {/*row*/}
                     </form>
                     <div className="d-flex w-100 justify-content-between">
@@ -354,7 +353,7 @@ export default function Forecast(props) {
    return "Please stand by while loading...";
   }
   } 
-}
+
 
  
 
