@@ -22,7 +22,7 @@ input {
  border-image: initial;
 }
 
-button {
+#search-button {
   color: red;
   background: transparent;
   display: block;
@@ -33,7 +33,7 @@ button {
   transition: all 200ms ease-in-out;
 }
 
-button :hover {
+#search-button :hover {
   color:rgb(59, 59, 59); 
   background: red;
   opacity: 0.7;
