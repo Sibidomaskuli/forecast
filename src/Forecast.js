@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import FormattedDate from "./FormattedDate";
 import FormattedWeekday from "./FormattedWeekday";
 import Icons from "./Icons"; 
@@ -22,7 +22,8 @@ export default function Forecast(props) {
    pressure: response.data.main.pressure, 
    humidity: response.data.main.humidity,
    wind: Math.round(response.data.wind.speed),
-   description: response.data.weather[0].description,     
+   description: response.data.weather[0].description,
+   coordinates: response.data.coord,   
   });
  }
  
@@ -31,23 +32,24 @@ export default function Forecast(props) {
   search(); 
  }
  
- function updateCity(event) {
+ function updateCity(event) { 
   setCity(event.target.value);    
  }
+
+ useEffect(() => {
+  setWeatherData(false);
+ }, [props.coordinates]); 
  
   function handleClick(event) {
-    
-    navigator.geolocation.getCurrentPosition(getCoords); 
-  } 
+    event.preventDefault();     
+    const key = "64c64ffadfe4c3d751ef8a44c2608885";
+    let latitude= props.coordinates.lat;
+    let longitude = props.coordinates.lon;   
+    let geoUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely,hourly,alert&appid=${key}&units=metric`;
+    axios.get(geoUrl).then(displayForecast);     
+  }
  
- function getCoords(response) {
-  const key = "64c64ffadfe4c3d751ef8a44c2608885";
-  let lat=response.coords.latitude;
-  let lon = response.coords.longtitude;   
-  let geoUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alert&appid=${key}&units=metric`;
-  axios.get(geoUrl).then(displayForecast);  
- }
-
+ 
  function search() {
   const key="64c64ffadfe4c3d751ef8a44c2608885";   
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
