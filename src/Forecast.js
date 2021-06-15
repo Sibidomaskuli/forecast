@@ -351,8 +351,14 @@ export default function Forecast(props) {
           </div> {/*weather-app*/}
         </div> {/*container*/}
       </div>
-  ); 
- } else if (weatherData.ready) {
+  );
+  
+ } else {
+  load();
+  return null;
+  
+ } else {
+  if (weatherData.ready) {
    return (
     <div className="App">
         <div className="container">
@@ -389,7 +395,7 @@ export default function Forecast(props) {
                     <form
                       className="Input"
                       onSubmit={handleSubmit}
-                    >
+                      >
                       <div className="row">
                         <div className="col-7">
                           <input
@@ -629,7 +635,7 @@ export default function Forecast(props) {
                             className="green"
                             target="_blank"
                             rel="noreferrer"
-                          >{" "}
+                            >{" "}
                             Netlify
                           </a>
                         </center>
@@ -644,11 +650,18 @@ export default function Forecast(props) {
       </div>
     );
    } else {
-   search();
-   return "Please stand by while loading...";
-  }
- }  
+    search();
+    return "Please stand by while loading...";
+   }
+   }
 
+ }
 
- 
-
+  
+  
+    
+  
+  
+  
+  
+  
